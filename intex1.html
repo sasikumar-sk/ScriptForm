@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #172b3f;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #d6e8f4;
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-container1 {
+            background-color: #ffffff;
+            border: 1px solid #fcfeff;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(101, 173, 222, 0.1);
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button[type="button"] {
+            background-color: #6c757d;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="button"]:hover {
+            background-color: #92c2e6;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .blinking-text {
+            text-align: center;
+            margin-top: 2%;
+            font-size: 16px;
+            color: rgb(52, 208, 243);
+            animation: blink 1s infinite;
+        }
+
+        .te {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        .field-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-container1">
+        <header>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUpLZY4G_ZM8gYW3Mc68SG3cOUdnTYp1c9VQ&s" alt="Company Logo">
+            <h1 class="te">Welcome to Daily DMAX Form</h1>
+            <p class="blinking-text">To calculate Production score please carefully fill out below fields</p>
+           
+        </header>
+        <form id="productionForm">
+            <!-- Page 1 -->
+            <div id="page1" class="form-page active">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <label for="employeeName">Employee Name:</label>
+                        <input type="text" id="employeeName" name="employeeName" required>
+                        <span class="error-message" id="errorEmployeeName">Employee Name is required</span>
+                    </div>
+                    <div class="grid-item">
+                        <label for="employeeId">Employee ID:</label>
+                        <input type="text" id="employeeId" name="employeeId" required>
+                        <span class="error-message" id="errorEmployeeId">Employee ID is required</span>
+                    </div>
+                    <div class="grid-item">
+                        <label for="employeeEmail">Employee Email:</label>
+                        <input type="email" id="employeeEmail" name="employeeEmail" required>
+                        <span class="error-message" id="errorEmployeeEmail">Employee Email is required</span>
+                    </div>
+                    <div class="grid-item">
+                        <label for="project">Project:</label>
+                        <select id="project" name="project" required>
+                            <option value="">Select a Project</option>
+                            <option value="Akyrian">Akyrian</option>
+                            <option value="Auxo">Auxo</option>
+                            <option value="Avanti">Avanti</option>
+                            <option value="Bench">Bench</option>
+                            <option value="Fora Travels">Fora Travels</option>
+                            <option value="Indihood">Indihood</option>
+                            <option value="IPS">IPS</option>
+                            <option value="IQHive">IQHive</option>
+                            <option value="LevelBlue">LevelBlue</option>
+                            <option value="Opus Clip">Opus Clip</option>
+                            <option value="Training">Training</option>
+                        </select>
+                        <span class="error-message" id="errorProject">Project selection is required</span>
+                    </div>
+                    <div class="grid-item">
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        <span class="error-message" id="errorDate">Date is required</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="button" onclick="nextPage()">Next</button>
+                </div>
+            </div>
+        
+
+            <!-- Page 2 -->
+            <div id="page2" class="form-page">
+                
+                <h6> Production Parameters (Manual + Automation) </h6>
+                <h5> Please fill out this DMAX form without fail<h5> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table-header">Field</th>
+                            <th class="table-header">Value</th>
+                            <th class="table-header">Field</th>
+                            <th class="table-header">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="field-container">Test Case Creation Target:</td>
+                            <td><input type="number" id="testcaseCreationTarget" name="testcaseCreationTarget" required>
+                                <span class="error-message" id="errorTestcaseCreationTarget">Test Case Creation Target is required</span>
+                            </td>
+                            <td class="field-container">Test Case Updation Target:</td>
+                            <td><input type="number" id="testcaseUpdationTarget" name="testcaseUpdationTarget" required>
+                                <span class="error-message" id="errorTestcaseUpdationTarget">Test Case Updation Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Test Case Creation Actual:</td>
+                            <td><input type="number" id="testcaseCreationActual" name="testcaseCreationActual" required>
+                                <span class="error-message" id="errorTestcaseCreationActual">Test Case Creation Actual is required</span>
+                            </td>
+                            <td class="field-container">Test Case Updation Actual:</td>
+                            <td><input type="number" id="testcaseUpdationActual" name="testcaseUpdationActual" required>
+                                <span class="error-message" id="errorTestcaseUpdationActual">Test Case Updation Actual is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Test Case Execution Target:</td>
+                            <td><input type="number" id="testcaseExecutionTarget" name="testcaseExecutionTarget" required>
+                                <span class="error-message" id="errorTestcaseExecutionTarget">Test Case Execution Target is required</span>
+                            </td>
+                            <td class="field-container">Test Case Execution Actual:</td>
+                            <td><input type="number" id="testcaseExecutionActual" name="testcaseExecutionActual" required>
+                                <span class="error-message" id="errorTestcaseExecutionActual">Test Case Execution Actual is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Defects Found Target:</td>
+                            <td><input type="number" id="defectsFoundTarget" name="defectsFoundTarget" required>
+                                <span class="error-message" id="errorDefectsFoundTarget">Defects Found Target is required</span>
+                            </td>
+                            <td class="field-container">Defects Found Actual:</td>
+                            <td><input type="number" id="defectsFoundActual" name="defectsFoundActual" required>
+                                <span class="error-message" id="errorDefectsFoundActual">Defects Found Actual is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Test Script Creation Target:</td>
+                            <td><input type="number" id="testscriptCreationTarget" name="testscriptCreationTarget" required>
+                                <span class="error-message" id="errorTestscriptCreationTarget">Test Script Creation Target is required</span>
+                            </td>
+                            <td class="field-container">Test Script Execution Target:</td>
+                            <td><input type="number" id="testscriptExecutionTarget" name="testscriptExecutionTarget" required>
+                                <span class="error-message" id="errorTestscriptExecutionTarget">Test Script Execution Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Production Target:</td>
+                            <td><input type="number" id="productionTarget" name="productionTarget" required>
+                                <span class="error-message" id="errorProductionTarget">Production Target is required</span>
+                            </td>
+                            <td class="field-container">Test Script Execution Actual:</td>
+                            <td><input type="number" id="testscriptExecutionActual" name="testscriptExecutionActual" required>
+                                <span class="error-message" id="errorTestscriptExecutionActual">Test Script Execution Actual is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Production Actual:</td>
+                            <td><input type="number" id="productionActual" name="productionActual" required>
+                                <span class="error-message" id="errorProductionActual">Production Actual is required</span>
+                            </td>
+                            <td class="field-container">Attendance Target:</td>
+                            <td><input type="number" id="attendanceTarget" name="attendanceTarget" required>
+                                <span class="error-message" id="errorAttendanceTarget">Attendance Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Attendance Actual:</td>
+                            <td><input type="number" id="attendanceActual" name="attendanceActual" required>
+                                <span class="error-message" id="errorAttendanceActual">Attendance Actual is required</span>
+                            </td>
+                            <td class="field-container">Quality Target:</td>
+                            <td><input type="number" id="qualityTarget" name="qualityTarget" required>
+                                <span class="error-message" id="errorQualityTarget">Quality Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Quality Actual:</td>
+                            <td><input type="number" id="qualityActual" name="qualityActual" required>
+                                <span class="error-message" id="errorQualityActual">Quality Actual is required</span>
+                            </td>
+                            <td class="field-container">Skill Target:</td>
+                            <td><input type="number" id="skillTarget" name="skillTarget" required>
+                                <span class="error-message" id="errorSkillTarget">Skill Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">Skill Actual:</td>
+                            <td><input type="number" id="skillActual" name="skillActual" required>
+                                <span class="error-message" id="errorSkillActual">Skill Actual is required</span>
+                            </td>
+                            <td class="field-container">New Initiatives Target:</td>
+                            <td><input type="number" id="newInitiativesTarget" name="newInitiativesTarget" required>
+                                <span class="error-message" id="errorNewInitiativesTarget">New Initiatives Target is required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="field-container">New Initiatives Actual:</td>
+                            <td><input type="number" id="newInitiativesActual" name="newInitiativesActual" required>
+                                <span class="error-message" id="errorNewInitiativesActual">New Initiatives Actual is required</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="button-group">
+                    <button type="button" onclick="previousPage()">Previous</button>
+                    <button type="button" onclick="submitForm()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentPage = 1;
+
+        function showPage(page) {
+            document.querySelectorAll('.form-page').forEach((pageElement, index) => {
+                pageElement.classList.remove('active');
+                if (index === page - 1) {
+                    pageElement.classList.add('active');
+                }
+            });
+        }
+
+        function arePage1FieldsFilled() {
+            const fields = document.querySelectorAll('#page1 input[required], #page1 select[required]');
+            let allFilled = true;
+
+            fields.forEach(field => {
+                const errorMessage = document.getElementById(`error${field.name.charAt(0).toUpperCase() + field.name.slice(1)}`);
+                if (field.value.trim() === '') {
+                    errorMessage.style.display = 'block';
+                    allFilled = false;
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
+
+            return allFilled;
+        }
+
+        function arePage2FieldsFilled() {
+            const fields = document.querySelectorAll('#page2 input[required]');
+            let allFilled = true;
+
+            fields.forEach(field => {
+                const errorMessage = document.getElementById(`error${field.name.charAt(0).toUpperCase() + field.name.slice(1)}`);
+                if (field.value.trim() === '') {
+                    errorMessage.style.display = 'block';
+                    allFilled = false;
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
+
+            return allFilled;
+        }
+
+        function nextPage() {
+            if (currentPage === 1) {
+                if (!arePage1FieldsFilled()) {
+                    alert('Please fill out all required fields on Page 1 before proceeding.');
+                    return;
+                }
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function previousPage() {
+            currentPage--;
+            showPage(currentPage);
+        }
+
+        function submitForm() {
+            if (currentPage === 2) {
+                if (!arePage2FieldsFilled()) {
+                    alert('Please fill out all required fields on Page 2 before submitting.');
+                    return;
+                }
+
+                const form = document.getElementById('productionForm');
+                const formData = new FormData(form);
+                fetch('https://script.google.com/macros/s/AKfycbzq1147BOpuyxlNPihOuNu7hvxsJfh3-hRFvuQXDOpk8WGzSgC-58ahWdPb4E785p1UPQ/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => alert('Form Submitted Successfully'))
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        showPage(currentPage); // Show the first page initially
+    </script>
+
+</body>
+
+</html>
