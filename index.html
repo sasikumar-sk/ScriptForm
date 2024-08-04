@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Form</title>
+</head>
+<body>
+    <form id="productionForm">
+        <label for="productionTarget">Production Target:</label>
+        <input type="number" id="productionTarget" name="productionTarget" required><br>
+
+        <label for="productionActual">Production Actual:</label>
+        <input type="number" id="productionActual" name="productionActual" required><br>
+
+        <label for="attendanceTarget">Attendance Target:</label>
+        <input type="number" id="attendanceTarget" name="attendanceTarget" required><br>
+
+        <label for="attendanceActual">Attendance Actual:</label>
+        <input type="number" id="attendanceActual" name="attendanceActual" required><br>
+
+        <label for="qualityTarget">Quality Target:</label>
+        <input type="number" id="qualityTarget" name="qualityTarget" required><br>
+
+        <label for="qualityActual">Quality Actual:</label>
+        <input type="number" id="qualityActual" name="qualityActual" required><br>
+
+        <label for="skillTarget">Skill Target:</label>
+        <input type="number" id="skillTarget" name="skillTarget" required><br>
+
+        <label for="skillActual">Skill Actual:</label>
+        <input type="number" id="skillActual" name="skillActual" required><br>
+
+        <label for="newInitiativesTarget">New Initiatives Target:</label>
+        <input type="number" id="newInitiativesTarget" name="newInitiativesTarget" required><br>
+
+        <label for="newInitiativesActual">New Initiatives Actual:</label>
+        <input type="number" id="newInitiativesActual" name="newInitiativesActual" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('productionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('https://script.google.com/macros/s/AKfycbx86J6HRfLph6QwQsb_HTCx9OTd2Q59w7OBzRLWud_ULipJ-Omk66SOxOSGl6fUqlqWGw/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => alert('Form Submitted Successfully'))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
